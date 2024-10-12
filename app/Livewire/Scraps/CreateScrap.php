@@ -2,28 +2,18 @@
 
 namespace App\Livewire\Scraps;
 
+use App\Livewire\Forms\ScrapForm;
 use Livewire\Component;
-use Illuminate\Support\Facades\Log;
-use App\Models\Scrap;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\Validate;
 
 class CreateScrap extends Component
 {
-    #[Title('スクラップ')]
-
-    #[Validate('required')]
-    public $body;
+    public ScrapForm $form;
 
     public function save()
     {
         $this->validate();
 
-        Scrap::create(
-            $this->only(['body'])
-        );
-
-        $this->reset();
+        $this->form->store();
 
         // 上部に#[On('scrap-created')]が付与されている別コンポーネントのイベント呼び出す
         $this->dispatch('scrap-created');
