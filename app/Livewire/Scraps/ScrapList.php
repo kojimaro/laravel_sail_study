@@ -31,6 +31,14 @@ class ScrapList extends Component
         $this->scrap = Scrap::find($id);
     }
 
+    public function deleteScrap($id)
+    {
+        $scrap = Scrap::find($id);
+        $scrap->delete();
+
+        $this->getScraps();
+    }
+
     public function render()
     {
         return view('livewire.scraps.scrap-list', [
