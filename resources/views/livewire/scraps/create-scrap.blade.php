@@ -3,7 +3,7 @@
         <h2 class="font-bold text-xl mb-2">Create Scrap</h2>
     </div>
 
-    <x-scrap-form submitBtnLabel="UPDATE">
+    <x-scrap-form submitBtnLabel="CREATE">
     </x-scrap-form>
 </div>
 
