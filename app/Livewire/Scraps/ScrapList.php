@@ -4,27 +4,16 @@ namespace App\Livewire\Scraps;
 
 use App\Models\Scrap;
 use Livewire\Component;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
+use Livewire\WithPagination;
 
 class ScrapList extends Component
 {
+    use WithPagination;
+
     #[Title('スクラップ')]
 
-    public $scraps;
-
     public Scrap $scrap;
-
-    public function mount()
-    {
-        $this->getScraps();
-    }
-
-    #[On('scrap-created')]
-    public function getScraps()
-    {
-        $this->scraps = Scrap::all();
-    }
 
     public function editScrap($id)
     {
@@ -35,14 +24,12 @@ class ScrapList extends Component
     {
         $scrap = Scrap::find($id);
         $scrap->delete();
-
-        $this->getScraps();
     }
 
     public function render()
     {
         return view('livewire.scraps.scrap-list', [
-            'scraps' => $this->scraps
+            'scraps' => Scrap::orderBy('id','desc')->paginate(4)
         ]);
     }
 }

@@ -14,9 +14,6 @@ class CreateScrap extends Component
         $this->validate();
 
         $this->form->store();
-
-        // 上部に#[On('scrap-created')]が付与されている別コンポーネントのイベント呼び出す
-        $this->dispatch('scrap-created');
     }
 
     public function render()

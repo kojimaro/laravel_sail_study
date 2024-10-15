@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-4 gap-4 mb-6">
         @foreach ($scraps as $scrap)
             <div
                 wire:key="{{ $scrap->id }}"
@@ -43,5 +43,9 @@
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div>
+        {{ $scraps->links() }}
     </div>
 </div>
