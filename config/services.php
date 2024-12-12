@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'aws' => [
+        'region' => 'ap-northeast-1',
+        'credentials' => env('APP_ENV') === 'local' ? [
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        ] : [], // 本番環境では空欄にしてインスタンスプロファイルを使用
+    ],
 ];

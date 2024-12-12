@@ -29,7 +29,8 @@ class ScrapList extends Component
     public function render()
     {
         return view('livewire.scraps.scrap-list', [
-            'scraps' => Scrap::orderBy('id','desc')->paginate(4)
+            //'scraps' => Scrap::orderBy('id','desc')->paginate(4)
+            'scraps' => collect(),
         ]);
     }
 }
