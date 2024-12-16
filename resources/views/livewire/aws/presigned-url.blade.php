@@ -5,22 +5,22 @@
         id="myVideo"
         controls
     >
-        <source src="{{$url}}" type="video/mp4" />
+        {{--<source src="{{$url}}" type="video/mp4" />--}}
     </video>
 </div>
 
-{{--@script
+@script
     <script>
-        const url = '{{$url}}';
+        const url = '{{route('api.presigned-url', ['v_id' => 1])}}';
+        console.log(url)
 
-        fetch(url)
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => {
-            const blob = new Blob([arrayBuffer], { type: this.mimeType });
-            const blobUrl = URL.createObjectURL(blob);
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        console.log(blobUrl);
 
-            var video = document.getElementById("myVideo");
-            video.src = blobUrl;
-        });
+        var video = document.getElementById("myVideo");
+        video.src = blobUrl;
+
     </script>
-@endscript--}}
+@endscript

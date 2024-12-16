@@ -6,6 +6,7 @@ use Livewire\Component;
 use Aws\S3\S3Client;
 use Aws\CloudFront\CloudFrontClient;
 use Aws\Exception\AwsException;
+use Illuminate\Support\Facades\Http;
 
 class PresignedUrl extends Component
 {
@@ -13,7 +14,10 @@ class PresignedUrl extends Component
 
     public function mount()
     {
-        $this->signAPrivateDistribution();
+        //$this->signAPrivateDistribution();
+
+        //$response = Http::get('https://www.google.co.jp/');
+        //dump($response->body());
     }
 
     public function render()
