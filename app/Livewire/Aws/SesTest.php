@@ -15,6 +15,7 @@ class SesTest extends Component
 
     public function handlePost()
     {
-        Mail::to('hsiiq96173@yahoo.co.jp')->send(new SendSesTest());
+        $to = env('AWS_SES_TEST_ADDRESS');
+        Mail::to($to)->send(new SendSesTest());
     }
 }
