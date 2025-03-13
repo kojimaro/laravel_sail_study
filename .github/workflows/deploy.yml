@@ -1,0 +1,30 @@
+name: Deploy Laravel to EC2
+
+on:
+  push:
+    branches:
+      - develop  # developブランチにプッシュされたときに実行
+
+concurrency: development_deploy # 同時実行を防ぐ（develop ブランチのデプロイは1つだけ）
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_USER: ${{ secrets.SSH_USER }}  # ← GitHub Secrets の値を環境変数として設定
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      DEPLOY_PATH: /home/ec2-user/dev01.deploy.test
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: deployerでデプロイ開始
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-user: ${{ secrets.SSH_USER }}
+          remote-host: ${{ secrets.SSH_HOST }}
+          deploy-path: /home/ec2-user/dev01.deploy.test
+          deployer-version: "7.5.12"
