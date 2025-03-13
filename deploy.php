@@ -13,6 +13,8 @@ $deployPath = getenv('DEPLOY_PATH');
 // Config
 
 set('repository', 'git@github.com:kojimaro/study_laravelwire.git');
+set('git_ssh_command', 'ssh -i ~/.ssh/github_deploy_key');
+set('git_tty', false); #対話形式を無効にする
 
 // releaseのバージョンを保持する数
 set('keep_releases', 3);
