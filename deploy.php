@@ -46,8 +46,8 @@ host($sshHost)
 
 // Tasks
 after('deploy:vendors', 'key:init');
-after('artisan:migrate', 'npm:install');
-after('npm:install', 'npm:run:build');
+#after('artisan:migrate', 'npm:install');
+#after('npm:install', 'npm:run:build');
 
 // APP_KEYが設定されていない場合に、key:generateを実行するタスク
 desc('key generate if not exists');
