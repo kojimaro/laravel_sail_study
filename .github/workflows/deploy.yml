@@ -10,6 +10,8 @@ concurrency: development_deploy # 同時実行を防ぐ（develop ブランチ�
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: development # GitHub Secretsで作成したdevelopmentの環境変数を指定
 
     env:
       SSH_USER: ${{ secrets.SSH_USER }}  # ← GitHub Secrets の値を環境変数として設定
@@ -25,8 +27,9 @@ jobs:
         with:
           dep: deploy
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-user: ${{ secrets.SSH_USER }}
-          remote-host: ${{ secrets.SSH_HOST }}
-          deploy-path: /home/ec2-user/dev01.deploy.test
           deployer-version: "7.5.12"
-          deployer-binary: "vendor/bin/dep"
+          # 詳細なデバッグログを表示
+          verbosity: -vvv
+          # ホストキーの確認をスキップ
+          ssh-config: |
+            StrictHostKeyChecking no
