@@ -38,7 +38,6 @@ add('writable_dirs', [
 // Hosts
 // デプロイ先のサーバーのアドレス（IPまたはホスト名）を設定する
 host($sshHost)
-    #->set('identity_file', '~/.ssh/id_rsa') //SSH接続に使用する秘密鍵
     ->set('remote_user', 'ec2-user') //SSH接続するユーザー名
     ->set('deploy_path', $deployPath) //デプロイ先のディレクトリ
     ->set('composer_options', '--verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'); // 開発サーバーには開発用のパッケージ (require-dev) を入れたいので--no-devを削除 (デフォルトだと--no-devが入る)
