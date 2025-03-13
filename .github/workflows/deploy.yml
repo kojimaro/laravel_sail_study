@@ -29,4 +29,4 @@ jobs:
           remote-host: ${{ secrets.SSH_HOST }}
           deploy-path: /home/ec2-user/dev01.deploy.test
           deployer-version: "7.5.12"
-          deployer-binary: "bin/dep"
+          deployer-binary: "vendor/bin/dep"
