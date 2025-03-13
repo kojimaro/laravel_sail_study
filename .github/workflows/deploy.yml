@@ -14,7 +14,7 @@ jobs:
       name: development # GitHub Secretsで作成したdevelopmentの環境変数を指定
 
     env:
-      SSH_USER: ${{ secrets.SSH_USER }}  # ← GitHub Secrets の値を環境変数として設定
+      SSH_USER: ${{ secrets.SSH_USER }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
       DEPLOY_PATH: /home/ec2-user/dev01.deploy.test
 
