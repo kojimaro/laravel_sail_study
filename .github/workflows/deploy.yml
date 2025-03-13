@@ -23,8 +23,10 @@ jobs:
       - name: deployerでデプロイ開始
         uses: deployphp/action@v1
         with:
+          dep: deploy
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote-user: ${{ secrets.SSH_USER }}
           remote-host: ${{ secrets.SSH_HOST }}
           deploy-path: /home/ec2-user/dev01.deploy.test
           deployer-version: "7.5.12"
+          deployer-binary: "bin/dep"
